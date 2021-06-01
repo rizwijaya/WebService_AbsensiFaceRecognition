@@ -99,7 +99,7 @@
                     </li> -->
                     <?php if ($this->session->userdata('id_user')) { ?>
                     <li class="nav-item d-none d-lg-block ml-lg-4">
-                        <a href="home/logout" class="btn btn-neutral btn-icon">
+                        <a href="<?= base_url(); ?>home/logout" class="btn btn-neutral btn-icon">
                             <span class="btn-inner--icon">
                                 <i class="fas fa-user mr-2"></i>
                             </span>
@@ -108,7 +108,7 @@
                     </li>
                     <?php  } else { ?>
                         <li class="nav-item d-none d-lg-block ml-lg-4">
-                            <a href="home/login" class="btn btn-neutral btn-icon">
+                            <a href="<?= base_url(); ?>home/login" class="btn btn-neutral btn-icon">
                                 <span class="btn-inner--icon">
                                     <i class="fas fa-user mr-2"></i>
                                 </span>
