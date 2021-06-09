@@ -36,6 +36,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="<?= base_url(); ?>dosen/absensi">
+                <i class="ni ni-chart-pie-35 text-info"></i>
+                <span class="nav-link-text">Absensi</span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/home/logout">
                 <i class="ni ni-archive-2 text-green"></i>
                 <span class="nav-link-text">Logout</span>

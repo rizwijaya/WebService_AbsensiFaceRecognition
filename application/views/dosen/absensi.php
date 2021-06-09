@@ -1,4 +1,4 @@
-        </div>
+</div>
         </div>
         </div>
         <!-- Page content -->
@@ -9,7 +9,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Data Mata Kuliah</h3>
+                            <h3 class="mb-0">Data Presensi Kuliah</h3>
                         </div>
                         <!-- Button trigger modal -->
                         <!-- <div class="col text-right">
@@ -27,7 +27,7 @@
                                 <th scope="col" class="sort" data-sort="mulai_kuliah">Hari</th>
                                 <th scope="col" class="sort" data-sort="mulai_kuliah">Mulai Kuliah</th>
                                 <th scope="col" class="sort" data-sort="selesai_kuliah">Selesai Kuliah</th>
-                                <th scope="col" class="sort" data-sort="cek_siswa"> Daftar Peserta</th>
+                                <th scope="col" class="sort" data-sort="cek_pertemuan"> Daftar Pertemuan</th>
                             </tr>
                         </thead>
                         <tbody class="list">
@@ -40,8 +40,8 @@
                                 <td><?= $mk['end_kuliah'];?> WIB</td>
                                 <td>
                                     <a class="btn btn-primary"
-                                     href="<?= base_url(); ?>dosen/cek_siswa/<?php echo $mk['id_matkul'] ?>">
-                                     <i class="fas fa-user"></i> 
+                                     href="<?= base_url(); ?>dosen/pertemuan/<?php echo $mk['id_matkul'] ?>">
+                                     <i class="fas fa-eye"></i> 
                                      Lihat
                                     </a>
                                 </td>

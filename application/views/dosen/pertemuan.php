@@ -1,4 +1,4 @@
-        </div>
+</div>
         </div>
         </div>
         <!-- Page content -->
@@ -9,7 +9,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Data Mata Kuliah</h3>
+                            <h3 class="mb-0">Data Presensi Kuliah</h3>
                         </div>
                         <!-- Button trigger modal -->
                         <!-- <div class="col text-right">
@@ -22,27 +22,45 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="sort" data-sort="no">No</th>
+                                <th scope="col" class="sort" data-sort="pekan">Pekan Kuliah</th>
                                 <th scope="col" class="sort" data-sort="mata_kuliah">Mata Kuliah</th>
                                 <th scope="col" class="sort" data-sort="mulai_kuliah">Hari</th>
                                 <th scope="col" class="sort" data-sort="mulai_kuliah">Mulai Kuliah</th>
                                 <th scope="col" class="sort" data-sort="selesai_kuliah">Selesai Kuliah</th>
-                                <th scope="col" class="sort" data-sort="cek_siswa"> Daftar Peserta</th>
+                                <th scope="col" class="sort" data-sort="Dosen"> Status</th>
+                                <th scope="col" class="sort" data-sort="absensi"> Aksi</th>
+                                <th scope="col" class="sort" data-sort="mahasiswa"> Daftar Mahasiswa</th>
                             </tr>
                         </thead>
                         <tbody class="list">
                             <tr>
-                                <?php $no =1; foreach ($matkul as $mk) : ?>
-                                <th scope="row"><?= $no++;?></th>
+                                <?php foreach ($pertemuan as $mk) : ?>
+                                <th scope="row">Pekan ke - <?= $mk['pekan']; ?></th>
                                 <td><?= $mk['nama_matkul']; ?></td>
                                 <td><?= $mk['hari_kuliah']; ?></td>
                                 <td><?= $mk['start_kuliah']; ?> WIB</td>
                                 <td><?= $mk['end_kuliah'];?> WIB</td>
+                                <td><?php 
+                                    if($mk['sts_pertemuan'] == 1) {
+                                        echo 'Belum Terlaksana';
+                                    } else {
+                                        echo $mk['end_kuliah'];
+                                        echo 'Selesai';
+                                    }
+                                
+                                ?></td>
                                 <td>
                                     <a class="btn btn-primary"
-                                     href="<?= base_url(); ?>dosen/cek_siswa/<?php echo $mk['id_matkul'] ?>">
+                                     href="<?= base_url(); ?>dosen/absensi/<?php echo $mk['id_pertemuan'] ?>">
+                                     <i class="fas fa-eye"></i> 
+                                     Ubah
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary"
+                                     href="<?= base_url(); ?>dosen/absensi/<?php echo $mk['id_pertemuan'] ?>">
                                      <i class="fas fa-user"></i> 
-                                     Lihat
+                                     Daftar
                                     </a>
                                 </td>
                             </tr>
