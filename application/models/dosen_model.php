@@ -24,7 +24,7 @@ class dosen_model extends CI_Model
     }
 
     function idpertemuan($id_matkul, $pekan) {
-        $q = "SELECT id_pertemuan FROM pertemuan WHERE id_matkul =" . $id_matkul . " AND pekan = " . $pekan;
+        $q = "SELECT id_pertemuan, id_matkul FROM pertemuan WHERE id_matkul =" . $id_matkul . " AND pekan = " . $pekan;
         $res = $this->db->query($q);
         return $res->result_array();          
     }
@@ -33,5 +33,33 @@ class dosen_model extends CI_Model
         $q = "SELECT t1.sts_kehadiran, t1.tgl_absen, t4.nama, t4.email, t4.no_induk FROM kehadiran t1 INNER JOIN frs t2 ON t1.id_frs = t2.id_frs INNER JOIN siswa t3 ON t2.id_siswa = t3.id_siswa INNER JOIN users t4 ON t3.id_user = t4.id_user WHERE t1.id_pertemuan = " . $id_pertemuan;
         $res = $this->db->query($q);
         return $res->result_array();
+    }
+
+    function running($id_pertemuan) {
+        $q = "SELECT t1.id_running, t1.id_device, t1.sts_running, t2.ruangan FROM running t1 INNER JOIN device t2 ON t1.id_device=t2.id_device WHERE t1.id_pertemuan= " . $id_pertemuan . " ORDER BY id_running DESC LIMIT 1";
+        $res = $this->db->query($q);
+        return $res->result_array();   
+    }
+    
+    function startingabsen($data) {
+        $this->db->set("id_device", $data['id_device']);
+        $this->db->set("id_pertemuan", $data['id_pertemuan']);
+        $this->db->set("mulai_run", $data['mulai_run']);
+        $this->db->set("end_run", $data['end_run']);
+        $this->db->set("sts_running", $data['sts_running']);
+
+        $this->db->insert("running");
+    }
+
+    function getdevice($id_pertemuan) {
+        $q = "SELECT id_device FROM pertemuan WHERE id_pertemuan= " . $id_pertemuan;
+        $res = $this->db->query($q);
+        return $res->result_array();   
+    }
+
+    function cekdevice($device) {
+        $q = "SELECT id_device, sts_running FROM running WHERE id_device= " .$device. " AND sts_running= 1";
+        $res = $this->db->query($q);
+        return $res->result_array();   
     }
 }   

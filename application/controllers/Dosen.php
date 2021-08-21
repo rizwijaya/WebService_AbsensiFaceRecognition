@@ -76,9 +76,38 @@ class Dosen extends CI_Controller {
         $id_user = $this->session->userdata('id_user');
         $this->load->model('dosen_model');
         $data['pertemuan'] = $this->dosen_model->pertemuan($id_matkul, $id_user);
+
         $this->load->view('template/dashboard/header');
         $this->load->view('template/dashboard/sidebar');
         $this->load->view('dosen/pertemuan', $data);
         $this->load->view('template/dashboard/footer');            
+    }
+
+    function startabsen() {
+        $this->load->model('dosen_model');
+        $device = $this->dosen_model->getdevice($this->input->post('id_pertemuan')); //Dapatkan data perangkat
+
+        $cek = $this->dosen_model->cekdevice($device[0]['id_device']);
+        if(empty($cek[0]['sts_running']) || $cek[0]['sts_running'] == 2) { //cek apakah device sedang berjalan
+            $mulai = $this->input->post('mulai_run');
+            $m = explode("T",$mulai);
+            $selesai = $this->input->post('end_run');
+            $s = explode("T",$selesai);
+
+            $data = array(
+                'id_pertemuan'	=> $this->input->post('id_pertemuan'),
+                'id_device'     => $device[0]['id_device'], //pilih device yang digunakan
+                'mulai_run'		=> $m[0] . ' ' . $m[1] . ':00',
+                'end_run'		=> $s[0] . ' ' . $s[1] . ':00',
+                'sts_running'   => 1 //Perangkat dijalankan
+            );
+
+            $this->dosen_model->startingabsen($data);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Absensi sedang berjalan! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</button></div>');
+            redirect('dosen/pertemuan/'. $this->input->post('id_matkul'));
+        } else { //Jika device sedang berjalan
+            $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">Device/ruangan sedang digunakan ! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</button></div>');
+            redirect('dosen/pertemuan/'. $this->input->post('id_matkul'));
+        }
     }
 }
