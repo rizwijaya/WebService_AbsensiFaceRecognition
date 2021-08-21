@@ -28,23 +28,25 @@ class Users extends CI_Controller
         );
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('template/login/header');
-            $this->load->view('login');
-            $this->load->view('template/login/footer');
+            redirect('home/login');
+            // $this->load->view('template/login/header');
+            // $this->load->view('login');
+            // $this->load->view('template/login/footer');
         } else {
             $nomorinduk      =    $this->input->post('nomorinduk');
             $password        =    $this->input->post('password');
             $users = $this->account->checklogin($nomorinduk, $password);
             if ($users == FALSE) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">Nomor Induk/Password anda salah! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</button></div>');
-                $this->load->view('template/login/header');
-                $this->load->view('login');
-                $this->load->view('template/login/footer');
+                redirect('home/login');
+                // $this->load->view('template/login/header');
+                // $this->load->view('login');
+                // $this->load->view('template/login/footer');
             } else {
                 //inisialisasi session
                 $this->session->set_userdata('id_user', $users[0]['id_user']);
                 $this->session->set_userdata('nama', $users[0]['nama']);
-                $this->session->set_userdata('no_induk', $users[0]['username']);
+                $this->session->set_userdata('no_induk', $users[0]['no_induk']);
                 $this->session->set_userdata('id_grup', $users[0]['id_grup']);
                 //ke halaman welcome page yang bersesuaian
                 switch ($users[0]['id_grup']) {

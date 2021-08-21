@@ -3,6 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Siswa extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('session');
+		if (!$this->session->userdata('no_induk')) {
+			redirect('home');
+		}
+
+		$session_data = $this->session->userdata('id_grup');
+		if ($session_data != 3) {
+			redirect('home/redirecting');
+		}
+	}
+
 	public function index()
 	{
 		$this->load->view('template/dashboard/header');

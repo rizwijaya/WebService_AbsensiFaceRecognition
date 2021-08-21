@@ -42,7 +42,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/home/logout">
+              <a class="nav-link" href="<?= base_url(); ?>home/logout">
                 <i class="ni ni-archive-2 text-green"></i>
                 <span class="nav-link-text">Logout</span>
               </a>

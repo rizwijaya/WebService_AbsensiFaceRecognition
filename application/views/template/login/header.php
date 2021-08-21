@@ -56,7 +56,7 @@
                         </a>
                     </li> -->
                     <li class="nav-item">
-                        <a href="<?= base_url(); ?>pages/examples/login.html" class="nav-link">
+                        <a href="<?= base_url(); ?>WebService/home" class="nav-link">
                             <span class="nav-link-inner--text">Login</span>
                         </a>
                     </li>
