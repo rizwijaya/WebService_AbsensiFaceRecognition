@@ -1,4 +1,4 @@
-        </div>
+</div>
         </div>
         </div>
         <!-- Page content -->
@@ -9,7 +9,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="mb-0">Data Mata Kuliah</h3>
+                            <h3 class="mb-0">Data Peserta Kuliah</h3>
                         </div>
                         <!-- Button trigger modal -->
                         <!-- <div class="col text-right">
@@ -23,28 +23,18 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="sort" data-sort="no">No</th>
-                                <th scope="col" class="sort" data-sort="mata_kuliah">Mata Kuliah</th>
-                                <th scope="col" class="sort" data-sort="mulai_kuliah">Hari</th>
-                                <th scope="col" class="sort" data-sort="mulai_kuliah">Mulai Kuliah</th>
-                                <th scope="col" class="sort" data-sort="selesai_kuliah">Selesai Kuliah</th>
-                                <th scope="col" class="sort" data-sort="cek_siswa"> Daftar Peserta</th>
+                                <th scope="col" class="sort" data-sort="no_induk">NRP</th>
+                                <th scope="col" class="sort" data-sort="nama_siswa">Nama Mahasiswa</th>
+                                <th scope="col" class="sort" data-sort="email">Email</th>
                             </tr>
                         </thead>
                         <tbody class="list">
                             <tr>
-                                <?php $no =1; foreach ($matkul as $mk) : ?>
+                                <?php $no =1; foreach ($siswa as $kh) : ?>
                                 <th scope="row"><?= $no++;?></th>
-                                <td><?= $mk['nama_matkul']; ?></td>
-                                <td><?= $mk['hari_kuliah']; ?></td>
-                                <td><?= $mk['start_kuliah']; ?> WIB</td>
-                                <td><?= $mk['end_kuliah'];?> WIB</td>
-                                <td>
-                                    <a class="btn btn-primary"
-                                     href="<?= base_url(); ?>dosen/daftarsiswa/<?php echo $mk['id_matkul'] ?>">
-                                     <i class="fas fa-user"></i> 
-                                     Lihat
-                                    </a>
-                                </td>
+                                <td><?= $kh['no_induk']; ?></td>
+                                <td><?= $kh['nama']; ?></td>
+                                <td><?= $kh['email']; ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

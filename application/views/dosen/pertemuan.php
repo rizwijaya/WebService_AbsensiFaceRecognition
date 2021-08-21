@@ -51,14 +51,14 @@
                                 ?></td>
                                 <td>
                                     <a class="btn btn-primary"
-                                     href="<?= base_url(); ?>dosen/absensi/<?php echo $mk['id_pertemuan'] ?>">
+                                     href="#">
                                      <i class="fas fa-eye"></i> 
                                      Ubah
                                     </a>
                                 </td>
                                 <td>
                                     <a class="btn btn-primary"
-                                     href="<?= base_url(); ?>dosen/absensi/<?php echo $mk['id_pertemuan'] ?>">
+                                     href="<?= base_url(); ?>dosen/ceksiswa/<?php echo $mk['id_matkul'] ?>/<?php echo $mk['pekan'] ?>">
                                      <i class="fas fa-user"></i> 
                                      Daftar
                                     </a>

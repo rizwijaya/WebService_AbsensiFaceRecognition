@@ -23,4 +23,15 @@ class dosen_model extends CI_Model
         return $res->result_array();              
     }
 
+    function idpertemuan($id_matkul, $pekan) {
+        $q = "SELECT id_pertemuan FROM pertemuan WHERE id_matkul =" . $id_matkul . " AND pekan = " . $pekan;
+        $res = $this->db->query($q);
+        return $res->result_array();          
+    }
+
+    function kehadiran($id_pertemuan) {
+        $q = "SELECT t1.sts_kehadiran, t1.tgl_absen, t4.nama, t4.email, t4.no_induk FROM kehadiran t1 INNER JOIN frs t2 ON t1.id_frs = t2.id_frs INNER JOIN siswa t3 ON t2.id_siswa = t3.id_siswa INNER JOIN users t4 ON t3.id_user = t4.id_user WHERE t1.id_pertemuan = " . $id_pertemuan;
+        $res = $this->db->query($q);
+        return $res->result_array();
+    }
 }   

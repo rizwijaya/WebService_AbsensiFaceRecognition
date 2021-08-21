@@ -26,15 +26,50 @@
                                 <th scope="col" class="sort" data-sort="no_induk">NRP</th>
                                 <th scope="col" class="sort" data-sort="nama_siswa">Nama Mahasiswa</th>
                                 <th scope="col" class="sort" data-sort="email">Email</th>
+                                <th scope="col" class="sort" data-sort="sts_kehadiran">Status Kehadiran</th>
+                                <th scope="col" class="sort" data-sort="jam_absen">Jam Absensi</th>
+                                <th scope="col" class="sort" data-sort="tgl_absen">Tanggal Absensi</th>
                             </tr>
                         </thead>
                         <tbody class="list">
                             <tr>
-                                <?php $no =1; foreach ($siswa as $mk) : ?>
+                                <?php $no =1; foreach ($kehadiran as $kh) : ?>
                                 <th scope="row"><?= $no++;?></th>
-                                <td><?= $mk['no_induk']; ?></td>
-                                <td><?= $mk['nama']; ?></td>
-                                <td><?= $mk['email']; ?></td>
+                                <td><?= $kh['no_induk']; ?></td>
+                                <td><?= $kh['nama']; ?></td>
+                                <td><?= $kh['email']; ?></td>
+                                <td><?php 
+                                    if($kh['sts_kehadiran'] == 1) {
+                                        echo 'Belum Terlaksana';
+                                    } else if($kh['sts_kehadiran'] == 2) {
+                                        echo 'Hadir';
+                                    } else if($kh['sts_kehadiran'] == 3) {
+                                        echo 'Alfa';
+                                    } else if($kh['sts_kehadiran'] == 4) {
+                                        echo 'Izin';
+                                    } else {
+                                        echo '-';
+                                    }
+                                ?></td>
+                                <td>
+                                    <?php 
+                                        if($kh['sts_kehadiran'] == 1) {
+                                            echo '-';
+                                        } else {
+                                            echo date('H:i', strtotime($kh["tgl_absen"]));
+                                            echo ' WIB';
+                                        }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php 
+                                        if($kh['sts_kehadiran'] == 1) {
+                                            echo '-';
+                                        } else {
+                                            echo date('d/m/Y', strtotime($kh["tgl_absen"]));
+                                        }
+                                    ?>
+                                </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

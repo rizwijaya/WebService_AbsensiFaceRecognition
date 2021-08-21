@@ -36,10 +36,24 @@ class Dosen extends CI_Controller {
         $this->load->view('template/dashboard/footer');
     }
 
-    public function cek_siswa($id_matkul)
-    {
+    public function daftarsiswa($id_matkul) {
         $this->load->model('dosen_model');
         $data['siswa'] = $this->dosen_model->siswa($id_matkul);
+        
+        $this->load->view('template/dashboard/header');
+        $this->load->view('template/dashboard/sidebar');
+        $this->load->view('dosen/daftarsiswa', $data);
+        $this->load->view('template/dashboard/footer');   
+    }
+
+    public function ceksiswa($id_matkul, $pekan)
+    {
+        $this->load->model('dosen_model');
+        //Get id_pertemuan dengan data id_matkul dan pekan
+        $id = $this->dosen_model->idpertemuan($id_matkul, $pekan);
+        //Dapatkan data kehadiran
+        $data['kehadiran'] = $this->dosen_model->kehadiran($id[0]['id_pertemuan']);
+        
         $this->load->view('template/dashboard/header');
         $this->load->view('template/dashboard/sidebar');
         $this->load->view('dosen/siswa', $data);
