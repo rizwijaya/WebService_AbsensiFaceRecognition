@@ -33,4 +33,15 @@ class Siswa extends CI_Controller {
         $this->load->view('siswa/matakuliah', $data);
         $this->load->view('template/dashboard/footer');  
 	}
+
+	public function absensi() {
+		$id_user = $this->session->userdata('id_user');
+        $this->load->model('siswa_model');
+        $data['matkul'] = $this->siswa_model->absensi($id_user);
+
+        $this->load->view('template/dashboard/header');
+        $this->load->view('template/dashboard/sidebar');
+        $this->load->view('siswa/absensi', $data);
+        $this->load->view('template/dashboard/footer'); 		
+	}
 }

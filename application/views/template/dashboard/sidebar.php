@@ -29,18 +29,44 @@
                 <span class="nav-link-text">Dashboards</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?= base_url(); ?>dosen/matkul">
-                <i class="ni ni-ungroup text-orange"></i>
-                <span class="nav-link-text">Mata Kuliah</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?= base_url(); ?>dosen/absensi">
-                <i class="ni ni-chart-pie-35 text-info"></i>
-                <span class="nav-link-text">Absensi</span>
-              </a>
-            </li>
+            <?php
+            $id_grup = $this->session->userdata('id_grup');
+            if ($id_grup == 1) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= base_url(); ?>admin/matkul">
+                  <i class="ni ni-ungroup text-orange"></i>
+                  <span class="nav-link-text">Mata Kuliah</span>
+                </a>
+              </li>
+            <?php  } else if ($id_grup == 2) { ?>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= base_url(); ?>dosen/matkul">
+                  <i class="ni ni-ungroup text-orange"></i>
+                  <span class="nav-link-text">Mata Kuliah</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= base_url(); ?>dosen/absensi">
+                  <i class="ni ni-chart-pie-35 text-info"></i>
+                  <span class="nav-link-text">Absensi</span>
+                </a>
+              </li>
+            <?php  } else if ($id_grup == 3) { ?>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= base_url(); ?>siswa/matakuliah">
+                  <i class="ni ni-ungroup text-orange"></i>
+                  <span class="nav-link-text">Mata Kuliah</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= base_url(); ?>siswa/absensi">
+                  <i class="ni ni-chart-pie-35 text-info"></i>
+                  <span class="nav-link-text">Absensi</span>
+                </a>
+              </li>
+
+            <?php } ?>
             <li class="nav-item">
               <a class="nav-link" href="<?= base_url(); ?>home/logout">
                 <i class="ni ni-archive-2 text-green"></i>
