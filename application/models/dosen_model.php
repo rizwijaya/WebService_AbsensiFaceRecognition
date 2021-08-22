@@ -47,6 +47,7 @@ class dosen_model extends CI_Model
         $this->db->set("mulai_run", $data['mulai_run']);
         $this->db->set("end_run", $data['end_run']);
         $this->db->set("sts_running", $data['sts_running']);
+        $this->db->set("sts_command", $data['sts_command']);
 
         $this->db->insert("running");
     }
@@ -61,5 +62,15 @@ class dosen_model extends CI_Model
         $q = "SELECT id_device, sts_running FROM running WHERE id_device= " .$device. " AND sts_running= 1";
         $res = $this->db->query($q);
         return $res->result_array();   
+    }
+
+    function stop($command, $run) {
+        $q = "SELECT id_running, sts_running, sts_command FROM running WHERE sts_command= ". $command ." AND sts_running= " . $run . " ORDER BY id_running DESC LIMIT 1";
+        $res = $this->db->query($q);
+        return $res->result_array();   
+    }
+
+    function stopping($table, $data, $where) {
+        $this->db->update($table, $data, $where);
     }
 }   
