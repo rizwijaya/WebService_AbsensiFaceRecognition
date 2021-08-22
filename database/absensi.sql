@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Agu 2021 pada 12.39
+-- Waktu pembuatan: 22 Agu 2021 pada 16.45
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -392,9 +392,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `email`, `no_induk`, `password`, `nama`, `id_grup`) VALUES
 (1, 'rizwijaya@gmail.com', '05311940000014', '$2y$10$KUn6zkMo/7MTqDyIiGWNCeGBMk/VbM.A1epCPe.XSdDAFNd8XpTIO', 'Rizqi Wijaya', 3),
-(2, 'dosen@dosen.com', 'dosen', '$2y$10$KUn6zkMo/7MTqDyIiGWNCeGBMk/VbM.A1epCPe.XSdDAFNd8XpTIO', 'dosen 1', 2),
+(2, 'dosen@dosen.com', 'dosen1', '$2y$10$KUn6zkMo/7MTqDyIiGWNCeGBMk/VbM.A1epCPe.XSdDAFNd8XpTIO', 'Muhammad Husni', 2),
 (3, 'hilmi@gmail.com', '05311940000044', '$2y$10$KUn6zkMo/7MTqDyIiGWNCeGBMk/VbM.A1epCPe.XSdDAFNd8XpTIO', 'Muhammad Hilmi Ramadhan', 3),
-(4, 'herwinda@gmail.com', '05311940000009', '$2y$10$KUn6zkMo/7MTqDyIiGWNCeGBMk/VbM.A1epCPe.XSdDAFNd8XpTIO', 'Herwinda Marwaa', 3);
+(4, 'herwinda@gmail.com', '05311940000009', '$2y$10$KUn6zkMo/7MTqDyIiGWNCeGBMk/VbM.A1epCPe.XSdDAFNd8XpTIO', 'Herwinda Marwaa', 3),
+(5, 'admin@admin.com', 'admin', '$2y$10$KUn6zkMo/7MTqDyIiGWNCeGBMk/VbM.A1epCPe.XSdDAFNd8XpTIO', 'Admin', 1);
 
 --
 -- Indexes for dumped tables
@@ -582,7 +583,7 @@ ALTER TABLE `s_running`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
