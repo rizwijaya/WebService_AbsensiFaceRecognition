@@ -24,7 +24,7 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="#navbar-dashboards">
+              <a class="nav-link active" href="<?= base_url(); ?>beranda/index">
                 <i class="ni ni-shop text-primary"></i>
                 <span class="nav-link-text">Dashboards</span>
               </a>
@@ -34,11 +34,17 @@
             if ($id_grup == 1) {
             ?>
               <li class="nav-item">
-                <a class="nav-link" href="<?= base_url(); ?>admin/matkul">
+                <a class="nav-link" href="<?= base_url(); ?>admin/daftardevice">
                   <i class="ni ni-ungroup text-orange"></i>
-                  <span class="nav-link-text">Mata Kuliah</span>
+                  <span class="nav-link-text">Daftar Perangkat</span>
                 </a>
               </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="<?= base_url(); ?>admin/tambahsiswa">
+                  <i class="ni ni-chart-pie-35 text-info"></i>
+                  <span class="nav-link-text">Tambah Mahasiswa</span>
+                </a>
+              </li> -->
             <?php  } else if ($id_grup == 2) { ?>
               <li class="nav-item">
                 <a class="nav-link" href="<?= base_url(); ?>dosen/matkul">

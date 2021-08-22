@@ -1,0 +1,51 @@
+</div>
+        </div>
+        </div>
+        <!-- Page content -->
+        <div class="container-fluid mt--6">
+            <!-- Content -->
+            <div class="card mb-12">
+                <!-- Table dimulai -->
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h3 class="mb-0">Data Perangkat</h3>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <!-- <div class="col text-right">
+                            <a class="btn btn-primary mb-0" href="daftarpeserta/cetak_sesi/"><i class="fa fa-print"></i> Cetak Laporan</a>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- Isi Tabel -->
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="sort" data-sort="no">No</th>
+                                <th scope="col" class="sort" data-sort="id_device">Id Device</th>
+                                <th scope="col" class="sort" data-sort="lokasi">Lokasi</th>
+                                <th scope="col" class="sort" data-sort="status">Status</th>
+                                <th scope="col" class="sort" data-sort="terpasang">Terpasang</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            <tr>
+                                <?php $no =1; foreach ($device as $mk) : ?>
+                                <th scope="row"><?= $no++;?></th>
+                                <td><?= $mk['id_device']; ?></td>
+                                <td><?= $mk['ruangan'];?></td>
+                                <td><?= $mk['status']; ?></td>
+                                <td><?php 
+                                    echo date('H:i', strtotime($mk["terpasang"]));
+                                    echo " WIB ";
+                                    echo date('(d/m/Y)', strtotime($mk["terpasang"]));
+                                ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Ini table nya -->
+            </div> <!-- Div Class Container Content-->
+            <!-- End Content -->
