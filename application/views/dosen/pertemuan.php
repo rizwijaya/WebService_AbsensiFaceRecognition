@@ -60,8 +60,8 @@
                                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah_data<?= $mk['id_pertemuan']; ?>"><i class="fas fa-eye"></i>
                                         mulai</button>
                                 <?php } else if($running[0]['sts_running'] == 1) { ?>
-                                    <button type="button" class="btn btn-sm btn-primary" disabled>
-                                        Berlangsung</button>
+                                    <a class="btn btn-sm btn-danger" href="<?= base_url(); ?>dosen/stop/<?php echo $mk['id_matkul'] ?>">
+                                        Hentikan</a>
                                 <?php  } else if($running[0]['sts_running'] == 2) { ?>
                                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tambah_data<?= $mk['id_pertemuan']; ?>"><i class="fas fa-eye"></i>
                                         mulai</button>

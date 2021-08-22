@@ -97,9 +97,10 @@ class Dosen extends CI_Controller {
             $data = array(
                 'id_pertemuan'	=> $this->input->post('id_pertemuan'),
                 'id_device'     => $device[0]['id_device'], //pilih device yang digunakan
-                'mulai_run'		=> $m[0] . ' ' . $m[1] . ':00',
-                'end_run'		=> $s[0] . ' ' . $s[1] . ':00',
-                'sts_running'   => 1 //Perangkat dijalankan
+                'mulai_run'		=> $m[0] . ' ' . $m[1] . ':02',
+                'end_run'		=> $s[0] . ' ' . $s[1] . ':02',
+                'sts_running'   => 1, //Perangkat dijalankan
+                'sts_command'   => 1 //Mode Absensi
             );
 
             $this->dosen_model->startingabsen($data);
@@ -109,5 +110,21 @@ class Dosen extends CI_Controller {
             $this->session->set_flashdata('pesan', '<div class="alert alert-warning alert-dismissible fade show" role="alert">Device/ruangan sedang digunakan ! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</button></div>');
             redirect('dosen/pertemuan/'. $this->input->post('id_matkul'));
         }
+    }
+
+    public function stop($matkul) {
+        $this->load->model('dosen_model');
+        $device = $this->dosen_model->stop(1, 1); //Mencari data device yang running
+        $data = array(
+			'sts_running' 	=> 2
+		);
+
+		$where = array(
+			'id_running' => $device[0]['id_running']
+		);
+
+        $this->dosen_model->stopping('running', $data, $where);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">Absensi berhasil diakhiri, perangkat dinonaktifkan! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</button></div>');
+        redirect('dosen/pertemuan/'. $matkul);
     }
 }
