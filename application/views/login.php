@@ -1,62 +1,39 @@
-  <!-- Main content -->
-  <div class="main-content">
-      <!-- Header -->
-      <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
-          <div class="separator separator-bottom separator-skew zindex-100">
-              <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-              </svg>
-          </div>
-      </div>
-      <!-- Page content -->
-      <div class="container mt--8 pb-5">
-          <div class="row justify-content-center">
-              <div class="col-lg-5 col-md-7">
-                  <div class="card bg-secondary border-0 mb-0">
-                      <div class="card-body px-lg-5 py-lg-5">
-                          <div class="text-center text-muted mb-4">
-                              <small>Sign In</small>
-                          </div>
-                          <form action="<?php echo base_url(); ?>users/checkinglogin" method="post" role="form">
-                              <div class="form-group mb-3">
-                                  <div class="input-group input-group-merge input-group-alternative">
-                                      <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                      </div>
-                                      <input class="form-control" placeholder="Nomor Induk" type="text"  id="nomorinduk" name="nomorinduk" required>
-                                      <?php echo form_error('nomorinduk', '<div style="font-size:13px" class="text-danger">', '</div>') ?>
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <div class="input-group input-group-merge input-group-alternative">
-                                      <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                      </div>
-                                      <input class="form-control" placeholder="Password" type="password" id="password" name="password" required>
-                                      <?php echo form_error('password', '<div style="font-size:13px" class="text-danger">', '</div>') ?>
-                                  </div>
-                              </div>
-                              <!-- <div class="custom-control custom-control-alternative custom-checkbox">
-                                  <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                                  <label class="custom-control-label" for=" customCheckLogin">
-                                      <span class="text-muted">Remember me</span>
-                                  </label>
-                              </div> -->
-                              <div class="text-center">
-                                  <button type="submit" class="btn btn-primary my-4" name="submit">Sign in</button>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-                  <!-- <div class="row mt-3">
-                      <div class="col-6">
-                          <a href="#" class="text-light"><small>Forgot password?</small></a>
-                      </div>
-                      <div class="col-6 text-right">
-                          <a href="<?php echo base_url(); ?>" class="text-light"><small>Create new account</small></a>
-                      </div>
-                  </div> -->
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="masuk">
+        <!-- FORM -->
+        <div class="container-fluid vertical-center">
+            <div class="container py-5 d-flex align-items-center justify-content-center">
+                <div class=" col-4 py-4">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="position-relative">
+                            <div class="position-absolute top-100 start-50 translate-middle">
+                                <img class="img-thumbnail bg-transparent border-0 " src="<?= base_url(); ?>assets/img/ludaringin/logoludaringin.png" alt="logoludaringin">
+                            </div>
+                        </div>
+                        <form class="shadow-sm rounded-3 pt-5 px-4 pb-4 loginCard">
+                            <div class="my-3 mx-3 py-3 text-white">
+                                <label for="exampleInputEmail1" class="form-label fw-bold  font-monospace text-white">Ludaringin ID</label>
+                                <input type="text" class="form-control bg-transparent  border-0 border-bottom " id="exampleInputEmail1" aria-describedby="emailHelp" style="color: white;">
+                            </div>
+                            <div class="mb-3 mx-3 py-3 text-white">
+                                <label for="exampleInputPassword1" class="form-label fw-bold  font-monospace text-white">Kata sandi</label>
+                                <input type="password" class="form-control bg-transparent  border-0 border-bottom " id="exampleInputEmail1" style="color: white;">
+                            </div>
+
+                            <div class="d-grid gap-2 my-3 text-center py-3 ">
+                                <button type="submit" class="btn text-white rounded-3 fw-bold shadow" style="background-color: #0099C4;">Masuk</button>
+                            </div>
+
+                            <div class="card-body">
+                                <a href="#" class="text-decoration-none">
+                                    <h6 class="card-title text-white">Lupa Kata sandi?</h6>
+                                </a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- FORM -->
+    </div>
