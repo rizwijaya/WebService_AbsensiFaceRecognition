@@ -1,5 +1,5 @@
 <?php
-class dosen_model extends CI_Model
+class Dosen_model extends CI_Model
 {
     function matkul($id_user){
         $q = "SELECT t3.id_matkul, t3.nama_matkul, t3.start_kuliah, t3.end_kuliah, t3.hari_kuliah FROM users t1 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Agu 2021 pada 16.45
+-- Waktu pembuatan: 11 Sep 2021 pada 06.48
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.33
 
@@ -116,6 +116,7 @@ CREATE TABLE `kehadiran` (
   `id_pertemuan` int(11) NOT NULL,
   `id_frs` int(11) NOT NULL,
   `sts_kehadiran` int(11) NOT NULL DEFAULT 1,
+  `bukapintu` int(11) NOT NULL DEFAULT 0,
   `tgl_absen` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -123,12 +124,12 @@ CREATE TABLE `kehadiran` (
 -- Dumping data untuk tabel `kehadiran`
 --
 
-INSERT INTO `kehadiran` (`id_kehadiran`, `id_pertemuan`, `id_frs`, `sts_kehadiran`, `tgl_absen`) VALUES
-(2, 1, 4, 2, '2021-08-21 09:44:10'),
-(3, 2, 1, 4, '2021-08-21 10:49:46'),
-(4, 2, 4, 2, '2021-08-21 10:49:46'),
-(5, 3, 3, 3, '2021-08-21 10:49:46'),
-(14, 1, 1, 2, '2021-08-22 01:55:30');
+INSERT INTO `kehadiran` (`id_kehadiran`, `id_pertemuan`, `id_frs`, `sts_kehadiran`, `bukapintu`, `tgl_absen`) VALUES
+(2, 1, 4, 2, 0, '2021-08-21 09:44:10'),
+(3, 2, 1, 4, 0, '2021-08-21 10:49:46'),
+(4, 2, 4, 2, 0, '2021-08-21 10:49:46'),
+(5, 3, 3, 3, 0, '2021-08-21 10:49:46'),
+(14, 1, 1, 2, 0, '2021-08-22 01:55:30');
 
 -- --------------------------------------------------------
 
@@ -266,7 +267,9 @@ INSERT INTO `running` (`id_running`, `id_device`, `id_pertemuan`, `mulai_run`, `
 (43, 1, 1, '2021-08-22 06:52:02', '2021-08-22 06:55:02', 2, 1),
 (44, 1, 1, '2021-08-22 06:55:02', '2021-08-22 06:57:02', 2, 1),
 (45, 1, 1, '2021-08-22 06:57:02', '2021-08-22 06:58:02', 2, 1),
-(46, 1, 1, '2021-08-22 06:58:02', '2021-08-22 06:59:02', 2, 1);
+(46, 1, 1, '2021-08-22 06:58:02', '2021-08-22 06:59:02', 2, 1),
+(47, 1, 1, '2021-08-24 11:10:02', '2021-08-24 11:13:02', 2, 1),
+(48, 1, 1, '2021-09-11 04:42:02', '2021-09-11 04:43:02', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -547,7 +550,7 @@ ALTER TABLE `pertemuan`
 -- AUTO_INCREMENT untuk tabel `running`
 --
 ALTER TABLE `running`
-  MODIFY `id_running` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_running` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa`
