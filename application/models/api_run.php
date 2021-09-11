@@ -30,10 +30,29 @@ class Api_run extends CI_Model
         return $res->result_array();         
     }
 
-    function inputAbsen($id_pertemuan, $id_frs, $sts_kehadiran, $date) {
+    function getmatkul($pertemuan) {
+        $q = "SELECT t1.id_pertemuan, t1.id_matkul, t2.nama_matkul, t2.start_kuliah, t2.end_kuliah, t2.hari_kuliah FROM pertemuan t1 INNER JOIN matkul t2 ON t1.id_matkul=t2.id_matkul WHERE t1.id_pertemuan = " . $pertemuan;
+        $res = $this->db->query($q);
+        return $res->result_array();         
+    }
+
+    function pintukehadiran() {
+        $q = "SELECT id_pertemuan, bukapintu FROM kehadiran ORDER BY id_kehadiran DESC LIMIT 1";
+        $res = $this->db->query($q);
+        return $res->result_array();         
+    }
+
+    function resetpintu() {
+        $q = "UPDATE kehadiran SET bukapintu = 0";
+        $res = $this->db->query($q);
+        return 1; 
+    }
+    
+    function inputAbsen($id_pertemuan, $id_frs, $sts_kehadiran, $date, $bukapintu) {
         $this->db->set("id_pertemuan", $id_pertemuan);
         $this->db->set("id_frs", $id_frs);
         $this->db->set("sts_kehadiran", $sts_kehadiran);
+        $this->db->set("bukapintu", $bukapintu);
         $this->db->set("tgl_absen", $date);
 
         $this->db->insert("kehadiran");
@@ -41,5 +60,17 @@ class Api_run extends CI_Model
 
     function updateAbsen($table, $data, $where) {
         $this->db->update($table, $data, $where);
+    }
+
+    function getJumlahPintu() {
+        $q = "SELECT count(bukapintu) as jumlah FROM kehadiran WHERE bukapintu = 1";
+        $res = $this->db->query($q);
+        return $res->result_array();
+    }
+
+    function getPintu($pertemuan, $frs) {
+        $q = "SELECT bukapintu FROM kehadiran WHERE id_frs = " . $frs . " AND id_pertemuan = " . $pertemuan;
+        $res = $this->db->query($q);
+        return $res->result_array();
     }
 }
