@@ -5,9 +5,13 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		// $this->load->view('template/login/header');
-        // $this->load->view('login');
-        // $this->load->view('template/login/footer');
+		if ($this->session->userdata('no_induk')) {
+            $this->redirecting();
+        }
+
+		$this->load->view('template/login/header');
+        $this->load->view('login');
+        $this->load->view('template/login/footer');
 	}
 
     public function redirecting()
